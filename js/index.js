@@ -1,13 +1,13 @@
 $(document).ready(function(){
 	// Change from style positioning to custom data attributes
-	// $('.map-point').each(function(){
-	// 	var top = $(this).attr('data-top');
-	// 	var left = $(this).attr('data-left');
-	// 	$(this).animate({
-	// 		top: top + 'px',
-	// 		left: left + 'px'
-	// 	});
-	// });
+	$('.map-point').each(function(){
+		var top = $(this).attr('data-top') + '%';
+		var left = $(this).attr('data-left') + '%';
+		$(this).animate({
+			top: top,
+			left: left
+		});
+	});
 
 
   var activeClass = 'active';
