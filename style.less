@@ -7,7 +7,7 @@
 @color-highlight-light: lighten(@color-highlight, 10%);
 @color-highlight-dark: darken(@color-highlight, 10%);
 @color-foreground: #000;
-@map-dot-size: 35px;
+@map-dot-size: 40px;
 @transition-time: 0.25s;
 html {
     background: @color-background;
@@ -29,18 +29,11 @@ body {
     text-align: left;
     font-size: 0.8em;
 }
-div,
-img,
-footer {
+div, img, footer {
     position: relative;
     box-sizing: border-box;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     margin-bottom: 20px;
     text-transform: uppercase;
     font-family: "Roboto Condensed", Helvetica, sans-serif;
@@ -71,8 +64,8 @@ p {
 }
 strong {
     font-weight: 900;
-    font-family: "Roboto Condensed", Helvetica, sans-serif;
-    color: black;
+    font-family: @font-stack-highlight;
+    color: @color-foreground;
 }
 a {
     -webkit-transition: color @transition-time ease-in-out;
@@ -80,16 +73,15 @@ a {
     font-family: "Roboto Condensed", Helvetica, sans-serif;
     text-transform: uppercase;
     text-decoration: none;
-    color: #898b9f;
+    color: @color-highlight-light;
+		&:visited{
+			color: @color-highlight-light;
+		}
+		li.active &, &:hover, &:active{
+			color: @color-foreground;
+		}
 }
-a:visited {
-    color: #898b9f;
-}
-li.active a,
-a:hover,
-a:active {
-    color: black;
-}
+
 .centered {
     position: absolute;
     top: 50%;
@@ -108,6 +100,11 @@ a:active {
 }
 
 
+// **********					************
+// **********					************
+// 				     	Map
+// **********					************
+// **********					************
 
 .distribution-map {
     position: relative;
@@ -126,24 +123,51 @@ a:active {
         outline: none;
         z-index: 0;
         position: absolute;
-        width: 35px;
-        height: 35px;
-        border-radius: 17.5px;
-				-moz-border-radius: 17.5px;
-				-webkit-border-radius: 17.5px;
+        width: @map-dot-size;
+        height: @map-dot-size;
+        .border-radius(@map-dot-size/2);
+				// -moz-border-radius: 17.5px;
+				// -webkit-border-radius: 17.5px;
         //filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
         .opacity(0.8);
         //-webkit-transform: translate(-50%, -50%);
         .transform(translate(-50%, -50%));
-        -moz-transition: opacity @transition-time ease-in-out @transition-time, width @transition-time ease-in-out @transition-time, height @transition-time ease-in-out @transition-time, z-index @transition-time ease-in-out @transition-time;
-        -o-transition: opacity @transition-time ease-in-out @transition-time, width @transition-time ease-in-out @transition-time, height @transition-time ease-in-out @transition-time, z-index @transition-time ease-in-out @transition-time;
-        -webkit-transition: opacity @transition-time ease-in-out, width @transition-time ease-in-out, height @transition-time ease-in-out, z-index @transition-time ease-in-out;
-        -webkit-transition-delay: @transition-time, @transition-time, @transition-time, @transition-time;
-        -webkit-transition: opacity @transition-time ease-in-out @transition-time, width @transition-time ease-in-out @transition-time, height @transition-time ease-in-out @transition-time, z-index @transition-time ease-in-out @transition-time;
-        transition: opacity @transition-time ease-in-out @transition-time, width @transition-time ease-in-out @transition-time, height @transition-time ease-in-out @transition-time, z-index @transition-time ease-in-out @transition-time;
-        background: rgba(255, 255, 255, 0.85);
-        border: 4.375px solid @color-highlight-dark;
-        &:active, &:focus, &:visited, &.active{
+
+        -moz-transition:
+					opacity @transition-time ease-in-out @transition-time,
+					width @transition-time ease-in-out @transition-time,
+					height @transition-time ease-in-out @transition-time,
+					z-index @transition-time ease-in-out @transition-time;
+
+        -o-transition:
+					opacity @transition-time ease-in-out @transition-time,
+					width @transition-time ease-in-out @transition-time,
+					height @transition-time ease-in-out @transition-time,
+					z-index @transition-time ease-in-out @transition-time;
+
+        -webkit-transition:
+					opacity @transition-time ease-in-out,
+					width @transition-time ease-in-out,
+					height @transition-time ease-in-out,
+					z-index @transition-time ease-in-out;
+
+				-webkit-transition-delay: @transition-time, @transition-time, @transition-time, @transition-time;
+
+				-webkit-transition:
+					opacity @transition-time ease-in-out @transition-time,
+					width @transition-time ease-in-out @transition-time,
+					height @transition-time ease-in-out @transition-time,
+					z-index @transition-time ease-in-out @transition-time;
+
+        transition:
+					opacity @transition-time ease-in-out @transition-time,
+					width @transition-time ease-in-out @transition-time,
+					height @transition-time ease-in-out @transition-time,
+					z-index @transition-time ease-in-out @transition-time;
+
+        background: fadeout(@color-background, 15%);
+        border: @map-dot-size/8 solid @color-highlight-dark;
+        &:active, &:focus, &.active{
             pointer-events: auto;
             -webkit-transform: translate(-50%, 50%);
             transform: translate(-50%, -50%);
@@ -153,7 +177,7 @@ a:active {
             .opacity(1);
             width: 250px;
             height: 500px;
-            color: black;
+            color: @color-foreground;
             z-index: 1;
             -webkit-transition: opacity @transition-time ease-in-out, width @transition-time ease-in-out, height @transition-time ease-in-out;
             transition: opacity @transition-time ease-in-out, width @transition-time ease-in-out, height @transition-time ease-in-out;
@@ -186,10 +210,12 @@ a:active {
         .content {
             //filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
             .opacity(0);
-            -webkit-transition: opacity @transition-time ease-in-out;
+            // -webkit-transition: opacity @transition-time ease-in-out;
             transition: opacity @transition-time ease-in-out;
             left: 50%;
-            -webkit-transform: translateX(-50%);
+						width: 100%;
+						heigth: 100%;
+            // -webkit-transform: translateX(-50%);
             .transform(translateX(-50%));
             overflow: scroll;
             // pointer-events: auto;
@@ -206,18 +232,65 @@ a:active {
     display: none;
     text-align: left;
 }
+
+
+
+// **********					************
+// **********					************
+// 		   	Mobile View
+// **********					************
+// **********					************
+
+
+
 @media all and (max-width: 767px) {
     #mobile-view {
         display: block;
     }
 
-    .content > .centered-y {
-        position: relative;
-        clear: both;
-    }
-    .distribution-map {
+    .map-image {
         display: none;
     }
+
+
+		.distribution-map {
+		    position: relative;
+		    width: 100%;
+		    padding: 20px;
+		    .box-sizing(border-box);
+		    margin: 0 auto;
+		    .map-point {
+						clear: both;
+						display: block;
+		        outline: none;
+		        z-index: 0;
+		        position: relative;
+		        width: 100%;
+		        height: auto;
+		        border: 0;
+		        background: none;
+		        border: @map-dot-size/8 solid @color-highlight-dark;
+						top:0px!important;
+						left:50%!important;
+		        .content {
+								clear:both;
+		            .opacity(1);
+								width: 100%;
+								heigth: 100%;
+		            // -webkit-transform: translateX(-50%);
+		            overflow:visible;
+								.centered-y{
+									position:relative;
+									clear: both;
+								}
+		        }
+		    }
+		}
+
+
+
+
+
 
 }
 

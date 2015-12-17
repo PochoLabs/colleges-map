@@ -326,8 +326,14 @@
 
 // Transitions
 
-.transition(@args:200ms) {
-    transition: @args;
+// .transition(@args:200ms) {
+//     transition: @args;
+// }
+.transition(@arguments) {
+	-moz-transition: @arguments;
+	-o-transition: @arguments;
+	-webkit-transition: @arguments;
+	transition: @arguments;
 }
 .transition-delay(@delay:0) {
     transition-delay: @delay;
