@@ -276,18 +276,18 @@
 
 // Transforms
 
-// .transform(@args) {
-//     -webkit-transform: @args;
-//     -ms-transform: @args;
-//     transform: @args;
-// }
-.transform(...) {
-  -webkit-transform: @arguments;
-  -moz-transform: @arguments;
-  -o-transform: @arguments;
-  -ms-transform: @arguments;
-  transform: @arguments;
+.transform(@args) {
+    -webkit-transform: @args;
+    -ms-transform: @args;
+    transform: @args;
 }
+// .transform(...) {
+//   -webkit-transform: @arguments;
+//   -moz-transform: @arguments;
+//   -o-transform: @arguments;
+//   -ms-transform: @arguments;
+//   transform: @arguments;
+// }
 .transform-origin(@args) {
     -webkit-transform-origin: @args;
     -ms-transform-origin: @args;
