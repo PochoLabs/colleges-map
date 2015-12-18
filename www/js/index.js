@@ -14,10 +14,9 @@ $(document).ready(function(){
 
 
   $('.map-point').click(function(e){
-    $('.map-point').removeClass(activeClass);
-    $(this).addClass(activeClass);
+    $('.map-point').removeClass(activeClass).focusout();
+    $(this).addClass(activeClass).focus();
     e.stopPropagation();
-		var useThis = $(this);
 
 
   });
