@@ -178,7 +178,7 @@ a {
 
         background: fadeout(@color-background, 15%);
         border: @map-dot-size/8 solid @color-highlight-dark;
-        &:active, &:focus, &.active{
+        &.active{
             pointer-events: auto;
             -webkit-transform: translate(-50%, 50%);
             transform: translate(-50%, -50%);
@@ -301,11 +301,12 @@ a {
 			      clear:both!important;
 						.transition(none);
 						.transform(none);
-						&:active, &:focus, &.active{
+						&.active{
 							.transition(none);
 							.transform(none);
 							width: 100%;
 							height: 100%;
+							margin-bottom: 20px;
 						}
 		        .content {
 								clear:both;
