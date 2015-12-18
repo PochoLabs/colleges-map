@@ -20,7 +20,7 @@ body {
     margin: 0px;
     padding: 20px 100px;
     overflow-x: hidden;
-		background: url('http://s20.postimg.org/d12grlrzt/body_bg.jpg') repeat 0 0;
+		// background: url('http://s20.postimg.org/d12grlrzt/body_bg.jpg') repeat 0 0;
 }
 .description {
     max-width: 600px;
@@ -99,6 +99,21 @@ a {
     }
 }
 
+.two-year{
+	font-style: italic;
+}
+
+.private{
+	&::before{
+		content: "* ";
+	}
+}
+
+.for-profit{
+	&::before{
+		content: "+ ";
+	}
+}
 
 // **********					************
 // **********					************
