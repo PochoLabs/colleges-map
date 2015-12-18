@@ -12,11 +12,6 @@ $(document).ready(function(){
 
   var activeClass = 'active';
 
-  // $('.centered-y > p > a').click(function(e){
-  //   e.preventDefault();
-  //   var url = $(this).attr('href');
-  //   window.open(url, '_blank');
-  // });
 
   $('.map-point').click(function(e){
     $('.map-point').removeClass(activeClass);
