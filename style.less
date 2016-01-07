@@ -181,6 +181,9 @@ a {
 
         background: fadeout(@color-background, 15%);
         border: @map-dot-size/8 solid @color-highlight-dark;
+				& > *{
+					display: none;
+				}
         &.active{
             pointer-events: auto;
             -webkit-transform: translate(-50%, 50%);
@@ -193,7 +196,9 @@ a {
             z-index: 1;
             -webkit-transition: opacity @transition-time ease-in-out, width @transition-time ease-in-out, height @transition-time ease-in-out;
             transition: opacity @transition-time ease-in-out, width @transition-time ease-in-out, height @transition-time ease-in-out;
-
+						& > *{
+							display: block;
+						}
             .content{
 							padding: 0 10px;
               top:0!important;
